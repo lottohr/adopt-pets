@@ -68,7 +68,6 @@ function carouselController(data){
       };
 
     function nextSlide(){
-        console.log(currentSlide)
         removeCurrentClass()  
 
         if(currentSlide === slidesLength.length-2 || currentSlide > 5){
