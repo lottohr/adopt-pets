@@ -70,9 +70,9 @@ function carouselController(data){
     function nextSlide(){
         removeCurrentClass()  
 
-        if(currentSlide === slidesLength.length-2){
+        if(currentSlide === slidesLength.length-2 || currentSlide > 5){
             carousel.style.transition = 'none';
-            // currentSlide = 2
+            currentSlide = 2
             // carousel.style.transform = `translateX(${-slideWidth * currentSlide}px)`;
         }
         
@@ -90,6 +90,8 @@ function carouselController(data){
             slidesLength[currentSlide+1].classList.add("current__slide")
             carousel.style.transition = '.7s ease-out';
             carousel.style.transform = `translateX(${-slideWidth * currentSlide}px)`
+        }else{
+            currentSlide = 1
         }
      
     }
