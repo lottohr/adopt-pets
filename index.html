@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Adopt pets</title>
+    <link rel="stylesheet" href="dist/css/styles.css">
+    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
+</head>
+<body>
+    
+    <nav class="nav">
+        <div class="nav_content content">
+            <button id="btnMenu" class="btn btn_menu">
+                <i class="fas fa-bars"></i>
+            </button>
+            <h1 class="nav_logo">Adopt pet</h1>
+            <div class="nav_menu"></div>
+        </div>
+    </nav>
+
+    <!-- Carousel section -->
+    <header id="carousel" class="carousel">
+        <div id="carouselContent" class="carousel__content"></div>
+        <button id="nextSlide" class="btn btn__carousel btn__next_slide"><i class="fas fa-chevron-right"></i></button>
+        <button id="prevSlide" class="btn btn__carousel btn__prev_slide"><i class="fas fa-chevron-left"></i></button>
+    </header>
+    
+    <!-- Filters section -->
+    <section id="sectionList" class="section">
+        <div class="filters section__filters">
+            <div class="filters_form_1">
+                <form class="form form__order" name="formSortBy">
+                    <span class="form__title">Order by:</span>
+                    <label for="name">Name</label>
+                    <input type="radio" id="name" name="sortBy" value="name">
+                    <label for="age">Age</label>
+                    <input type="radio" id="age" name="sortBy" value="age" checked> 
+                </form>
+
+                <form class="form form__sort" name="formSortOrder">
+                    <span class="form__title">Sort:</span>
+                    <label for="asc">Asc</label>
+                    <input type="radio" id="asc" name="sortOrder" value="asc" checked >
+                    <label for="asc">Desc</label>
+                    <input type="radio" id="desc" name="sortOrder" value="desc"> 
+                </form>
+                
+                <!-- Search filter -->
+                <input type="text" id="search" class="search_bar" placeholder="Search" />
+            </div>
+
+            <div class="filters_form_2">
+                <form class="form form__filter" name="formFilters">
+                    <div class="form__filter__box">
+                        <input type="checkbox" id="filterAge1" name="filterAge1" value="6" class="filter_checkbox">
+                        <label for="filterAge1">Less than 6 months old</label>
+                    </div>
+                    
+                    <div class="form__filter__box">
+                        <input type="checkbox" id="filterAge2" name="filterAge2" value="12" class="filter_checkbox">
+                        <label for="filterAge2">Less than 12 months old</label>
+                    </div>
+                    
+                    <div class="form__filter__box">
+                        <input type="checkbox" id="filterColor" name="filterColor" value="Black" class="filter_checkbox">
+                        <label for="filterColor">Color: Black</label>
+                    </div>
+                </form>
+            </div>
+           
+        </div>
+  
+        <main class="section__list">
+            <div id="listData" class="section__list__content"></div>
+        </main>
+
+        <button id="btnLoadMore" class="btn btn__load_more">Load more</button>
+    </section>
+
+    <div id="adoptModal" class="modal">
+        <div id="adoptModalInfo"></div>
+    </div>
+    <div class="modal_overlay"></div>
+    
+    <footer>
+        <div id="modalOverley" class="footer footer__content"></div>
+    </footer>
+
+    <script src="dist/main.js"></script>
+</body>
+</html>

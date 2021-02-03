@@ -1,0 +1,42 @@
+// Media query mixins
+ @mixin tablet-width {
+    @media (min-width: #{$tablet-width}) {
+        @content;
+    }
+ }
+ 
+ @mixin desktop-width {
+    @media (min-width: #{$desktop-width}) {
+        @content;
+    }
+ }
+
+ @mixin desktop-width-large {
+    @media (min-width: #{$desktop-width-large}) {
+        @content;
+    }
+ }
+
+
+// Layout mixin
+@mixin display-flex {
+    display: flex;
+    flex-direction: column;
+}
+
+@mixin resp-img{
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+@mixin box-shadow{
+    box-shadow: 0px 10px 25px 0px rgba(0, 0, 0, 0.199);
+}
+
+@mixin scale{
+    transition: transform .3s ease-in-out;
+    &:hover{
+        transform: scale(1.1);
+    }
+}

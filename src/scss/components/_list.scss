@@ -1,0 +1,12 @@
+.section__list{
+    &__content{
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        padding: 20px;
+    
+        @include desktop-width{
+            flex-direction: row;
+        }
+    }
+}

@@ -1,0 +1,75 @@
+.btn{
+    padding: 10px 20px;
+    color: white;
+    font-weight: 500;
+    transition: box-shadow .3s ease-in-out;
+
+    &:hover{
+        @include box-shadow;
+    }
+
+    &_close{
+        border-radius: 50%;
+        position: absolute;
+        right: 0;
+        top: 10px;
+        &:hover{
+            box-shadow: none;
+        }
+        .fas{
+            color: $primary-color;
+            font-size: 30px;
+            transition: transform .3s ease-in-out;
+            &:hover{
+                transform: scale(1.1);
+            }
+        }
+    }
+
+    &_menu{
+        &:hover{
+            box-shadow: none;
+        }
+        .fas{
+            color: white;
+            font-size: 30px;
+            transition: transform .3s ease-in-out;
+            &:hover{
+                transform: scale(1.1);
+            }
+        }
+    }
+    
+    &__load_more{
+        width: 150px;
+        margin: 20px;
+        align-self: center;
+        background-color: $secondary-color;
+    }
+
+    &__adopt{
+        width: 100%;
+        text-align: center;
+        background-color: $primary-color;
+    }
+
+    &__carousel{
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        border-radius: 50%;
+        background-color: $primary-color;
+        width: 50px;
+        height: 50px;
+        color: white;
+        font-size: 20px;
+    }
+
+    &__next_slide{
+        right: 20px;
+    }
+
+    &__prev_slide{
+        left: 20px;
+    }
+}

@@ -1,0 +1,92 @@
+[
+    {
+      "age": 1,
+      "color": "white",
+      "name": "Wade"
+    },
+    {
+      "age": 4,
+      "color": "black",
+      "name": "Wilda"
+    },
+    {
+      "age": 14,
+      "color": "white",
+      "name": "Huffman"
+    },
+    {
+      "age": 8,
+      "color": "black",
+      "name": "Dorsey"
+    },
+    {
+      "age": 12,
+      "color": "white",
+      "name": "Kristine"
+    },
+    {
+      "age": 11,
+      "color": "orange",
+      "name": "Harvey"
+    },
+    {
+      "age": 15,
+      "color": "red",
+      "name": "Cortez"
+    },
+    {
+      "age": 14,
+      "color": "orange",
+      "name": "Trisha"
+    },
+    {
+      "age": 13,
+      "color": "black",
+      "name": "Olive"
+    },
+    {
+      "age": 13,
+      "color": "brown",
+      "name": "Sophie"
+    },
+    {
+      "age": 16,
+      "color": "red",
+      "name": "Sharon"
+    },
+    {
+      "age": 15,
+      "color": "white",
+      "name": "Kristie"
+    },
+    {
+      "age": 1,
+      "color": "black",
+      "name": "Allie"
+    },
+    {
+      "age": 8,
+      "color": "black",
+      "name": "Alice"
+    },
+    {
+      "age": 14,
+      "color": "brown",
+      "name": "Esperanza"
+    },
+    {
+      "age": 11,
+      "color": "brown",
+      "name": "Clara"
+    },
+    {
+      "age": 18,
+      "color": "brown",
+      "name": "Sampson"
+    },
+    {
+      "age": 15,
+      "color": "white",
+      "name": "Mayra"
+    }
+  ]
