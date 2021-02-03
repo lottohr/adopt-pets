@@ -68,11 +68,13 @@ function carouselController(data){
       };
 
     function nextSlide(){
+        console.log(currentSlide)
         removeCurrentClass()  
 
-        if(currentSlide === slidesLength.length-2){
+        if(currentSlide === slidesLength.length-2 || currentSlide > 5){
             carousel.style.transition = 'none';
-            // currentSlide = 2
+            console.log('veci je od 5')
+            currentSlide = 2
             // carousel.style.transform = `translateX(${-slideWidth * currentSlide}px)`;
         }
         
@@ -85,11 +87,14 @@ function carouselController(data){
 
     function prevSlide(){
         removeCurrentClass()
+        console.log(currentSlide)
         currentSlide--;
         if( currentSlide > 0){
             slidesLength[currentSlide+1].classList.add("current__slide")
             carousel.style.transition = '.7s ease-out';
             carousel.style.transform = `translateX(${-slideWidth * currentSlide}px)`
+        }else{
+            currentSlide = 1
         }
      
     }
