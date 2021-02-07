@@ -9,24 +9,48 @@
         display: flex;
         flex-wrap: nowrap;
         flex-direction: row;
-        transform: translateX(-430px);
+        height: 400px;
     }
 
     &__item{
-        position: relative;
-        height: 430px;
-        width: 450px;
-        flex-shrink: 0;
-        margin: 0px;
+        position: absolute;
+        width: 48%;
+        height: 400px;
+        transition: 1s all ease;
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-position: center;
 
-        @include desktop-width{
-            opacity: 0.6;
+        &:nth-child(1) {
+          left: 0;
+          transform: translateX(-100%);
         }
 
+        &:nth-child(2) {
+          left: 0;
+          transform: translateX(-50%);
+        }
+
+        &:nth-child(3) {
+          left: 50%;
+          transform: translateX(-50%);
+          z-index: 99;
+        }
+
+        &:nth-child(4) {
+          left: 100%;
+          transform: translateX(-50%);
+        }
+
+        &:nth-child(n+5) {
+          left: 125%;
+        }
+ 
         &__info{
             height: 100%;
             background-size: cover;
             background-position: center;
+
 
             &__title{
                 position: absolute;
@@ -43,8 +67,6 @@
     }
 
     .current__slide{
-        opacity: 1;
-        z-index: 999;
         cursor: pointer;
 
         @include tablet-width{
@@ -52,8 +74,4 @@
         }
       
     }
-}
-
-.transform-animation{
-    transition: all .3s;
 }

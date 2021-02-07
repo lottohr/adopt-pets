@@ -55,6 +55,7 @@
 
     &__carousel{
         position: absolute;
+        z-index: 999;
         top: 50%;
         transform: translateY(-50%);
         border-radius: 50%;
