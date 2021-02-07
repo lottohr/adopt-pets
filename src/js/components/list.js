@@ -95,7 +95,7 @@ function listController(state, jsonData){
     function showModal(){
         for (let i = 0; i < adoptBtn.length; i++) {
             adoptBtn[i].onclick = ()=>{
-              renderModal(data.filter(el => el.id == adoptBtn[i].parentNode.id));
+              renderModal(data.filter(el => el.id == adoptBtn[i].parentNode.dataset.id));
               document.dispatchEvent(listModalLodade);
             }
         }
