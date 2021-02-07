@@ -1,52 +1,28 @@
+import getData from "./js/helpers/getData.js";
 import listComponent from "./js/components/list.js";
 import carouselComponent from "./js/components/carousel.js";
 
 const carousel = async () => {
-    const response = await fetch("./data.json");
-    const data = await response.json();
-
-    if (!response.ok) {
-        throw new Error(`HTTP error! status: ${response.status}`);
-    } else {
-        data.forEach((obj, id) => {
-            Object.assign(obj, {
-                id: id,
-                img: `img/${obj.name.toLowerCase()}.jpg`
-            })
-        })
-        let jsonData = data.sort((a, b) => a.age - b.age).slice(0, 4);
-        carouselComponent(jsonData);
-    }
+    let data = getData();
+    data = await data; 
+    carouselComponent(data);
 }
 
 const list = async () => {
-    const response = await fetch("./data.json");
-    const data = await response.json();
+    let data = getData();
+    data = await data;
 
-    if (!response.ok) {
-        throw new Error(`HTTP error! status: ${response.status}`);
-    } else {
-        data.forEach((obj, id) => {
-            Object.assign(obj, {
-                id: id,
-                img: `img/${obj.name.toLowerCase()}.jpg`
-            })
-        })
-
-        let jsonData = data.sort((a, b) => a.age - b.age);
-        let state = {
-            currentItems: 20,
-            totalItems: data.length,
-            sortBy: "age",
-            sortOrder: "asc",
-            filterAge1: "null",
-            filterAge2: "null",
-            filterColor: "null",
-        };
-
-        //List controller
-        listComponent(state, jsonData);
-    }
+    let jsonData = data.sort((a, b) => a.age - b.age);
+    let state = {
+        currentItems: 20,
+        totalItems: data.length,
+        sortBy: "age",
+        sortOrder: "asc",
+        filterAge1: "null",
+        filterAge2: "null",
+        filterColor: "null",
+    };
+    listComponent(state, jsonData);
 }
 
 window.addEventListener("load", () => {
