@@ -1,5 +1,4 @@
 export default function modalTemplate(item){
-
     let output  = `
         <div id="modal_content" >
         <button id="btnReject" class="btn btn_close" ><i class="fas fa-times-circle"></i></button>
@@ -12,5 +11,5 @@ export default function modalTemplate(item){
         </div>
         <button id="btnConfirm" data-name="${item[0].name}" data-id="${item[0].id}" class="btn btn__load_more">Yes</button>
         `; 
-    document.getElementById('adoptModalInfo').innerHTML = output
+    document.getElementById('adoptModalInfo').innerHTML = output;
 }
