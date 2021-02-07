@@ -1,16 +1,18 @@
 .card{
-    width: 100%;
-    margin: 20px;
+    flex: 0 1 43%;
+    margin: 10px;
     background-color: $grey-color;
     @include box-shadow;
+    @include tablet-width{
+        margin: 20px;
+    }
 
     img{
         width: 100%;
-        height: 350px;
+        height: 225px;
         object-fit: cover;
         object-position: center;
-
-        @include desktop-width{
+        @include tablet-width{
             height: 200px;
         }
     }
@@ -30,7 +32,7 @@
     }
 
     @include tablet-width{
-        flex: 0 1 40%;
+        flex: 0 1 28%;
     }
     
     @include desktop-width{
