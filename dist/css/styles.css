@@ -151,6 +151,7 @@ li {
     background-color: #29728A; }
   .btn__carousel {
     position: absolute;
+    z-index: 999;
     top: 50%;
     transform: translateY(-50%);
     border-radius: 50%;
@@ -246,16 +247,19 @@ li {
       width: 350px; } }
 
 .card {
-  width: 100%;
-  margin: 20px;
+  flex: 0 1 43%;
+  margin: 10px;
   background-color: #e1e1e1;
   box-shadow: 0px 10px 25px 0px rgba(0, 0, 0, 0.199); }
+  @media (min-width: 768px) {
+    .card {
+      margin: 20px; } }
   .card img {
     width: 100%;
-    height: 350px;
+    height: 225px;
     object-fit: cover;
     object-position: center; }
-    @media (min-width: 920px) {
+    @media (min-width: 768px) {
       .card img {
         height: 200px; } }
   .card__info {
@@ -268,7 +272,7 @@ li {
       margin-bottom: 0; }
   @media (min-width: 768px) {
     .card {
-      flex: 0 1 40%; } }
+      flex: 0 1 28%; } }
   @media (min-width: 920px) {
     .card {
       flex: 0 1 17%;
@@ -280,7 +284,10 @@ li {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  padding: 20px; }
+  padding: 5px; }
+  @media (min-width: 768px) {
+    .section__list__content {
+      padding: 20px; } }
   @media (min-width: 920px) {
     .section__list__content {
       flex-direction: row; } }
@@ -295,16 +302,30 @@ li {
     display: flex;
     flex-wrap: nowrap;
     flex-direction: row;
-    transform: translateX(-430px); }
+    height: 400px; }
   .carousel__item {
-    position: relative;
-    height: 430px;
-    width: 450px;
-    flex-shrink: 0;
-    margin: 0px; }
-    @media (min-width: 920px) {
-      .carousel__item {
-        opacity: 0.6; } }
+    position: absolute;
+    width: 48%;
+    height: 400px;
+    transition: 1s all ease;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center; }
+    .carousel__item:nth-child(1) {
+      left: 0;
+      transform: translateX(-100%); }
+    .carousel__item:nth-child(2) {
+      left: 0;
+      transform: translateX(-50%); }
+    .carousel__item:nth-child(3) {
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 99; }
+    .carousel__item:nth-child(4) {
+      left: 100%;
+      transform: translateX(-50%); }
+    .carousel__item:nth-child(n+5) {
+      left: 125%; }
     .carousel__item__info {
       height: 100%;
       background-size: cover;
@@ -320,17 +341,10 @@ li {
         background-color: rgba(0, 0, 0, 0.685);
         font-size: 34px; }
   .carousel .current__slide {
-    opacity: 1;
-    z-index: 999;
     cursor: pointer; }
     @media (min-width: 768px) {
-      .carousel .current__slide {
-        transition: transform .3s ease-in-out; }
-        .carousel .current__slide:hover {
-          transform: scale(1.1); } }
-
-.transform-animation {
-  transition: all .3s; }
+      .carousel .current__slide:hover {
+        transform: translateX(-50%) scale(1.1); } }
 
 .modal {
   display: none;
