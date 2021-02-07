@@ -1,7 +1,7 @@
 import sortData from '../../js/helpers/sort.js'
 import filterData from '../../js/helpers/filters.js'
 import renderTemplate from '../../js/templates/listTemplate.js'
-import renderModal from '../../js/templates/modalList.js'
+import renderModal from '../../js/templates/modalTemplate.js'
 
 function listController(state, jsonData){
 
@@ -27,7 +27,7 @@ function listController(state, jsonData){
 
     // On load more button 
     btnLoadMore.onclick = function() {
-        state.currentItems += 10
+        state.currentItems += 20
         state.sortOrder = 'asc'
         state.sortBy ='age'
 

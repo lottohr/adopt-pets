@@ -39,7 +39,7 @@ const carousel = async () => {
         let jsonData = data.sort((a, b) => a.age - b.age)
 
         let state ={
-            currentItems: 10,
+            currentItems: 20,
             totalItems:data.length,
             sortBy:'age',
             sortOrder:'asc',
