@@ -3,7 +3,11 @@
         display: flex;
         flex-wrap: wrap;
         justify-content: center;
-        padding: 20px;
+        padding: 5px;
+
+        @include tablet-width{
+            padding: 20px;
+        }
     
         @include desktop-width{
             flex-direction: row;
