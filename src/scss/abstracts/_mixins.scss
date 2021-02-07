@@ -35,8 +35,8 @@
 }
 
 @mixin scale{
-    transition: transform .3s ease-in-out;
+    // transition: transform .3s ease-in-out;
     &:hover{
-        transform: scale(1.1);
+        transform: translateX(-50%)  scale(1.1);
     }
 }
