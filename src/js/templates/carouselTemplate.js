@@ -1,6 +1,5 @@
 export default function carouselTemplate(data){
-    let output = ''
-    
+    let output = "";
     data.forEach((item)=>{
         output += `
             <div id="${item.id}" class="slide carousel__item ">
@@ -10,7 +9,5 @@ export default function carouselTemplate(data){
             </div>
         `;
     });
-    
-    document.getElementById('carouselContent').innerHTML = output
-    
+    document.getElementById("carouselContent").innerHTML = output;
 }
