@@ -7,36 +7,28 @@ function carouselController(data){
     const prevBtn = document.getElementById("prevSlide");
     const carousel = document.querySelector("#carouselContent");
     const interval = 2000;
+    const carouselModalLoaded = new Event('modalLoaded');
     let slideId;
     let slides = carousel.querySelectorAll(".carousel__item");
-    const firstClone = slides[0].cloneNode(true);
-    const secondClone = slides[1].cloneNode(true);
-    const lastClone = slides[slides.length - 1].cloneNode(true);
-    const secondLastClone = slides[slides.length - 2].cloneNode(true);
-    const carouselModalLoaded = new Event('modalLoaded');
-
-    // Clone carousel items
-    carousel.prepend(lastClone);
-    carousel.prepend(secondLastClone);
-    carousel.append(firstClone);
-    carousel.append(secondClone);
-
-    // Set first slide to current slide
-    slides[0].classList.add("current__slide");
  
-    function removeCurrentClass(){
-        let slides = carousel.querySelectorAll(".carousel__item");
-        for (let i = 0; i < slides.length; i++) {
-            slides[i].classList.remove("current__slide");
-        }
-    }
-
     const initCarousel = () => {    
         slideId = setInterval(() => {
             nextSlide();
         }, interval);
-      };
+    };
  
+    function cloneSlides(){
+        let slides = carousel.querySelectorAll(".carousel__item");
+        const firstClone = slides[0].cloneNode(true);
+        const secondClone = slides[1].cloneNode(true);
+        const lastClone = slides[slides.length - 1].cloneNode(true);
+        const secondLastClone = slides[slides.length - 2].cloneNode(true);
+        carousel.prepend(lastClone);
+        carousel.prepend(secondLastClone);
+        carousel.append(firstClone);
+        carousel.append(secondClone);
+    }
+
     function nextSlide(){
         removeCurrentClass();
         let slides = carousel.querySelectorAll(".carousel__item");
@@ -53,6 +45,13 @@ function carouselController(data){
         slides[1].classList.add("current__slide"); 
         carousel.insertBefore(slides[slides.length - 1], slides[0]);
         showModalOnCurrentSlideClick();
+    }
+
+    function removeCurrentClass(){
+        let slides = carousel.querySelectorAll(".carousel__item");
+        for (let i = 0; i < slides.length; i++) {
+            slides[i].classList.remove("current__slide");
+        }
     }
 
     function showModalOnCurrentSlideClick(){
@@ -92,27 +91,25 @@ function carouselController(data){
         slide.removeEventListener('mouseleave', initCarousel);
     }
 
-    initCarousel();
-    showModalOnCurrentSlideClick();
-
     nextBtn.addEventListener("mouseenter", stopSlider);
     prevBtn.addEventListener("mouseenter", stopSlider);
-
     nextBtn.addEventListener("mouseleave", initCarousel);
     prevBtn.addEventListener("mouseleave", initCarousel);
-
     nextBtn.addEventListener("click", nextSlide);
     prevBtn.addEventListener("click", prevSlide);
 
     document.addEventListener("carouselUpdated", (ev) => {   
         renderTemplate(ev.detail.data.sort((a, b) => a.age - b.age).slice(0, 4));
+        cloneSlides();
         let slides = carousel.querySelectorAll(".carousel__item");
         let currentSlide = slides[3];
         currentSlide.classList.add("current__slide");
-        carousel.prepend(lastClone);
-        carousel.prepend(secondLastClone);
-        carousel.append(firstClone);
-        carousel.append(secondClone);
     })
+
+    cloneSlides();
+    // Set first slide to current slide
+    slides[0].classList.add("current__slide");
+    initCarousel();
+    showModalOnCurrentSlideClick();
 }
 export default carouselController
