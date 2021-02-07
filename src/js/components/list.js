@@ -1,5 +1,6 @@
 import sortData from "../../js/helpers/sort.js";
 import filterData from "../../js/helpers/filters.js";
+import searchData from "../../js/helpers/search.js";
 import renderTemplate from "../../js/templates/listTemplate.js";
 import renderModal from "../../js/templates/modalTemplate.js";
 
@@ -18,7 +19,7 @@ function listController(state, jsonData){
 
     // Load first num of items
     renderTemplate(data);
-    searchData(data, state);
+    setSearchInput();
     showModal();
 
     btnLoadMore.onclick = function() {
@@ -76,17 +77,18 @@ function listController(state, jsonData){
     setFilter(filterAge2);
     setFilter(filterAge1);
 
-    function searchData(){
+    function setSearchInput(){
         const search_input = document.getElementById("search");
         let search_term = "";
-    
         search_input.addEventListener("input", (e) => {
             search_term = e.target.value;
-            data = filterData(jsonData.slice(0, state.currentItems), state);
-            data = data.filter(
-            	el => el.name.toLowerCase().includes(search_term.toLowerCase())
-            )
+            data = searchData(jsonData, state, search_term);
             document.dispatchEvent(dataUpdated);
+            if(state.currentItems >= state.totalItems || search_term !=="" ){
+                btnLoadMore.setAttribute("style", "display:none"); 
+            }else{
+                btnLoadMore.setAttribute("style", "display:block");
+            }
         });
     }
 
