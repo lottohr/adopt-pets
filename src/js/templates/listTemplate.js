@@ -3,7 +3,7 @@ export default function listTemplate(data){
     if(data.length > 0){
         data.forEach((item)=>{
             output += `
-                <div id="${item.id}" class="card">
+                <div class="card" data-id="${item.id}">
                 <img src="${item.img}" >
                     <div class="card__info">
                         <h2> ${item.name}</h2>
