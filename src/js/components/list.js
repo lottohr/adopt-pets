@@ -106,6 +106,7 @@ function listController(state, jsonData){
     const listModalLodade = new Event("modalLoaded");
 
     document.addEventListener("updated", () => {   
+        data = data.filter(e  => !deletedData.includes(e) )
         sortData(data, state);
         renderTemplate(data);
         showModal();
@@ -124,8 +125,8 @@ function listController(state, jsonData){
                     deletedData = [...deletedData, el];
                 } 
             })
-            data = data.filter(e  => !deletedData.includes(e) )
-            const carouselUpdated = new CustomEvent('carouselUpdated', { detail: { 'data': data }});
+            let carouselData = data.filter(e  => !deletedData.includes(e) )
+            const carouselUpdated = new CustomEvent('carouselUpdated', { detail: { 'data': carouselData }});
             document.dispatchEvent(carouselUpdated);
             document.dispatchEvent(dataUpdated);
             document.getElementById("adoptModal").style.display="none";
