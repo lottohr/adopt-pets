@@ -21,6 +21,7 @@ const list = async () => {
         filterAge1: "null",
         filterAge2: "null",
         filterColor: "null",
+        searchTerm: "",
     };
     listComponent(state, jsonData);
 }

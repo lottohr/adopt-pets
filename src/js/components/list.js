@@ -63,10 +63,12 @@ function listController(state, jsonData){
         filter.addEventListener("change", function(){
             if (this.checked == 1){
                 state[`${filterName}`] = this.value;
+                data = searchData(jsonData, state, state.searchTerm);
                 data = filterData(data, state);
             } else{
                 state[`${filterName}`] = "null";
-                data = filterData(jsonData.slice(0, state.currentItems), state);
+                data = searchData(jsonData, state, state.searchTerm);
+                data = filterData(data.slice(0, state.currentItems), state);
             }
             document.dispatchEvent(dataUpdated);
         })
@@ -82,6 +84,7 @@ function listController(state, jsonData){
         let search_term = "";
         search_input.addEventListener("input", (e) => {
             search_term = e.target.value;
+            state.searchTerm = search_term;
             data = searchData(jsonData, state, search_term);
             document.dispatchEvent(dataUpdated);
             if(state.currentItems >= state.totalItems || search_term !=="" ){
