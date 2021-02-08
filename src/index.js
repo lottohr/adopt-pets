@@ -12,7 +12,7 @@ const list = async () => {
     let data = getData();
     data = await data;
 
-    let jsonData = data.sort((a, b) => a.age - b.age);
+    let jsonData = data.sort((a, b) => a.age - b.age || a.name.localeCompare(b.name));
     let state = {
         currentItems: 20,
         totalItems: data.length,

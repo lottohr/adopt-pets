@@ -2,7 +2,12 @@ import renderTemplate from "../../js/templates/carouselTemplate.js";
 import renderModal from "../../js/templates/modalTemplate.js";
 
 function carouselController(data){
-    renderTemplate(data.sort((a, b) => a.age - b.age).slice(0, 4));
+    renderTemplate(
+        data.sort(
+            (a, b) => a.age - b.age || a.name.localeCompare(b.name)
+        )
+        .slice(0, 4)
+    );
     const nextBtn = document.getElementById("nextSlide");
     const prevBtn = document.getElementById("prevSlide");
     const carousel = document.querySelector("#carouselContent");
