@@ -9,7 +9,7 @@
     transform: translate(-50%, -50%);
     background-color: white;
     text-align: center;
-    z-index: 99;
+    z-index: 999;
 
     @include desktop-width{
         width: 420px;
@@ -28,9 +28,17 @@
         margin-bottom: 20px;
     }
 
+    &_img{
+        height: 100px;
+        width: 100px;
+        border-radius: 50%;
+        object-fit: cover;
+        object-position: center;
+    }
+
     &_overlay{
         .modal-opened &{
-            position: absolute;
+            position: fixed;
             top: 0;
             left: 0;
             width: 100%;
