@@ -15,5 +15,5 @@ export default function modalTemplate(item){
         </div>
         <button id="btnConfirm" data-name="${item[0].name}" data-id="${item[0].id}" class="btn btn__load_more">Yes</button>
         `; 
-    document.getElementById('adoptModalInfo').innerHTML = output;
+    document.getElementById("adoptModalInfo").innerHTML = output;
 }

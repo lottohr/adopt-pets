@@ -42,21 +42,21 @@ function listController(state, jsonData){
             btnLoadMore.setAttribute("style", "display:none"); 
         }
         document.dispatchEvent(dataUpdated);
-    };    
+    }    
 
     sortByBtns.forEach((btn)=>{
         btn.addEventListener("change", function() {
             state.sortBy = this.value;
             document.dispatchEvent(dataUpdated);
         });
-    })
+    });
 
     sortOrderBtns.forEach((btn)=>{
         btn.addEventListener("change", function() {
             state.sortOrder = this.value;
             document.dispatchEvent(dataUpdated);
         }); 
-    })
+    });
     
     function setFilter(filter){
         let filterName = filter.id;
@@ -71,7 +71,7 @@ function listController(state, jsonData){
                 data = filterData(data.slice(0, state.currentItems), state);
             }
             document.dispatchEvent(dataUpdated);
-        })
+        });
     }
 
     // Init filters
@@ -109,11 +109,11 @@ function listController(state, jsonData){
     const listModalLodade = new Event("modalLoaded");
 
     document.addEventListener("updated", () => {   
-        data = data.filter(e  => !deletedData.includes(e) )
+        data = data.filter(e  => !deletedData.includes(e));
         sortData(data, state);
         renderTemplate(data);
         showModal();
-    })
+    });
 
     document.addEventListener("modalLoaded", () => {   
         let btnReject = document.getElementById("btnReject");
@@ -127,9 +127,9 @@ function listController(state, jsonData){
                 if(el.id == btnConfirm.dataset.id){
                     deletedData = [...deletedData, el];
                 } 
-            })
-            let carouselData = data.filter(e  => !deletedData.includes(e) )
-            const carouselUpdated = new CustomEvent('carouselUpdated', { detail: { 'data': carouselData }});
+            });
+            let carouselData = data.filter(e  => !deletedData.includes(e) );
+            const carouselUpdated = new CustomEvent("carouselUpdated", { detail: { "data": carouselData }});
             document.dispatchEvent(carouselUpdated);
             document.dispatchEvent(dataUpdated);
             document.getElementById("adoptModal").style.display="none";
@@ -140,6 +140,6 @@ function listController(state, jsonData){
             document.getElementById("adoptModal").style.display="none";
             body.classList.remove("modal-opened");
         }
-    })
+    });
 }
 export default listController

@@ -9,7 +9,7 @@ const getData = async () =>{
             Object.assign(obj, {
                 id: id,
                 img: `img/${obj.name.toLowerCase()}.jpg`
-            })
+            });
         });
     }
     return data;

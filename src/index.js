@@ -11,7 +11,6 @@ const carousel = async () => {
 const list = async () => {
     let data = getData();
     data = await data;
-
     let jsonData = data.sort((a, b) => a.age - b.age || a.name.localeCompare(b.name));
     let state = {
         currentItems: 20,
@@ -33,15 +32,13 @@ window.addEventListener("load", () => {
 
     // Remove modal on click outside
     let modal = document.querySelector(".modal_overlay");
-    modal.addEventListener("click", function (e) {
+    modal.addEventListener("click", function () {
         document.getElementById("adoptModal").style.display = "none";
         document.body.classList.remove("modal-opened");
     });
 
-
     let menuBtn = document.querySelector(".menu_btn");
-    menuBtn.addEventListener("click", function (e) {
-        menuBtn.classList.toggle('change');
+    menuBtn.addEventListener("click", function () {
+        menuBtn.classList.toggle("change");
     });
-    
 });

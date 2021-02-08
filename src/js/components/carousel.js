@@ -13,7 +13,7 @@ function carouselController(data){
     const carousel = document.querySelector("#carouselContent");
     const currentSlideOverlay = document.getElementById("current__slide__overlay");
     const interval = 2000;
-    const carouselModalLoaded = new Event('modalLoaded');
+    const carouselModalLoaded = new Event("modalLoaded");
     let slideId;
  
     const startSlider = () => {    
@@ -67,7 +67,7 @@ function carouselController(data){
     function showModalOnCurrentSlideClick(){
         let slides = document.querySelectorAll(".carousel__item");
         slides.forEach((slide)=>{
-            if(slide.classList.contains('current__slide')){
+            if(slide.classList.contains("current__slide")){
                 currentSlideOverlay.onclick = ()=>{
                     renderModal(data.filter(el => el.id == slide.id));
                     document.getElementById("adoptModal").style.display="block";
@@ -97,7 +97,6 @@ function carouselController(data){
         currentSlide.classList.remove("pop_slide");
         startSlider();
     });
-
     document.addEventListener("carouselUpdated", (ev) => {   
         renderTemplate(ev.detail.data.sort((a, b) => a.age - b.age).slice(0, 4));
         cloneSlides();
@@ -105,7 +104,7 @@ function carouselController(data){
         let slides = carousel.querySelectorAll(".carousel__item");
         let currentSlide = slides[3];
         currentSlide.classList.add("current__slide");
-    })
+    });
 
     cloneSlides();
     startSlider();
