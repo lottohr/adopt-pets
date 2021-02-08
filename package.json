@@ -8,7 +8,7 @@
         "node-sass": "^4.7.2"
     },
     "scripts": {
-        "scss": "node-sass --watch src/scss -o dist/css",
+        "scss": "node-sass src/scss/styles.scss -o dist/css && node-sass src/scss/ -wo dist/css",
         "watch": "webpack --watch",
         "build": "webpack"
     },
