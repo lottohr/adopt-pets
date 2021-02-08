@@ -17,26 +17,13 @@
     }
  }
 
-
-// Layout mixin
-@mixin display-flex {
-    display: flex;
-    flex-direction: column;
-}
-
-@mixin resp-img{
-    background-size: cover;
-    background-repeat: no-repeat;
-    background-position: center;
-}
-
-@mixin box-shadow{
-    box-shadow: 0px 10px 25px 0px rgba(0, 0, 0, 0.199);
+// Elements style mixins
+@mixin box-shadow($shadow){
+    box-shadow: $shadow;
 }
 
 @mixin scale{
-    // transition: transform .3s ease-in-out;
     &:hover{
-        transform: translateX(-50%)  scale(1.1);
+        transform: translateX(-50%) scale(1.1);
     }
 }

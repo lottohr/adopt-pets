@@ -14,7 +14,7 @@
     @include desktop-width{
         width: 420px;
     }
-    @include box-shadow; 
+    @include box-shadow(0px 10px 25px 0px rgba(0, 0, 0, 0.199));
     
     &_content{
         padding: 30px 0;
