@@ -37,4 +37,11 @@ window.addEventListener("load", () => {
         document.getElementById("adoptModal").style.display = "none";
         document.body.classList.remove("modal-opened");
     });
+
+
+    let menuBtn = document.querySelector(".menu_btn");
+    menuBtn.addEventListener("click", function (e) {
+        menuBtn.classList.toggle('change');
+    });
+    
 });

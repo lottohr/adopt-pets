@@ -16,27 +16,19 @@
         &:hover{
             box-shadow: none;
         }
-        .fas{
-            color: $primary-color;
-            font-size: 30px;
-            transition: transform .3s ease-in-out;
-            &:hover{
-                transform: scale(1.1);
-            }
+        .bar1, 
+        .bar2 {
+          width: 27px;
+          height: 3px;
+          background-color: $primary-color;
+          margin: 6px 0;
+          transition: 0.4s;
         }
-    }
-
-    &_menu{
-        &:hover{
-            box-shadow: none;
-        }
-        .fas{
-            color: white;
-            font-size: 30px;
-            transition: transform .3s ease-in-out;
-            &:hover{
-                transform: scale(1.1);
-            }
+        .bar1 {
+            transform: rotate(-45deg) translate(0px, 0px);
+          }
+        .bar2 {
+            transform: rotate(45deg) translate(-6px, -6px);
         }
     }
     
@@ -55,15 +47,19 @@
 
     &__carousel{
         position: absolute;
+        bottom: 15px;
         z-index: 999;
-        top: 50%;
-        transform: translateY(-50%);
         border-radius: 50%;
         background-color: $primary-color;
         width: 50px;
         height: 50px;
         color: white;
         font-size: 20px;
+
+        @include tablet-width{
+            top: 50%;
+            transform: translateY(-50%);
+        }
     }
 
     &__next_slide{
@@ -72,5 +68,64 @@
 
     &__prev_slide{
         left: 20px;
+    }
+}
+
+.chevron{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    &:before {
+        content: '';
+        position: relative;
+        display: inline-block;
+        border-style: solid;
+        border-width: 4px 4px 0 0;
+        height: 12px;
+        width: 12px;
+    }
+
+    &_right:before {
+        left: -2px;
+        transform: rotate(45deg);
+    }
+
+    &_left:before {
+        left: 4px;
+        transform: rotate(-135deg);
+    }
+}
+
+.menu_btn {
+    display: block;
+    align-self: center;
+    cursor: pointer;
+    z-index: 9999;
+    margin: 10px 20px;
+  }
+  
+  .bar1, 
+  .bar2, 
+  .bar3 {
+    width: 27px;
+    height: 3px;
+    background-color: white;
+    margin: 6px 0;
+    transition: 0.4s;
+    .change &{
+        background-color: white;
+      }
+  }
+  
+  .change {
+    .bar1 {
+        transform: rotate(-45deg) translate(-9px, 9px);
+      }
+    .bar2 {
+        opacity: 0;
+    }
+    .bar3 {
+        transform: rotate(45deg) translate(-4px, -4px);
     }
 }
