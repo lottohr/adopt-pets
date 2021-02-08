@@ -16,10 +16,13 @@
         position: absolute;
         width: 48%;
         height: 400px;
-        transition: 1s all ease;
+        transition: .7s all ease;
         background-size: cover;
         background-repeat: no-repeat;
         background-position: center;
+        backface-visibility: hidden;
+        border: none;
+        will-change: transform;
 
         &:nth-child(1) {
           left: 0;
@@ -50,8 +53,6 @@
             height: 100%;
             background-size: cover;
             background-position: center;
-
-
             &__title{
                 position: absolute;
                 width: 100%;
@@ -66,7 +67,7 @@
         }
     }
 
-    .current__slide{
+    .current__slide{ 
         cursor: pointer;
 
         @include tablet-width{
