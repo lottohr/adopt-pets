@@ -19,6 +19,7 @@ function carouselController(data){
  
     function cloneSlides(){
         let slides = carousel.querySelectorAll(".carousel__item");
+        let currentSlide = slides[0];
         const firstClone = slides[0].cloneNode(true);
         const secondClone = slides[1].cloneNode(true);
         const lastClone = slides[slides.length - 1].cloneNode(true);
@@ -27,6 +28,7 @@ function carouselController(data){
         carousel.prepend(secondLastClone);
         carousel.append(firstClone);
         carousel.append(secondClone);
+        currentSlide.classList.add("current__slide"); 
     }
 
     function nextSlide(){
@@ -45,6 +47,7 @@ function carouselController(data){
         slides[1].classList.add("current__slide"); 
         carousel.insertBefore(slides[slides.length - 1], slides[0]);
         showModalOnCurrentSlideClick();
+        stopSliderOnCurrentSlideHover();
     }
 
     function removeCurrentClass(){
@@ -108,7 +111,7 @@ function carouselController(data){
 
     cloneSlides();
     // Set first slide to current slide
-    slides[0].classList.add("current__slide");
+    // slides[0].classList.add("current__slide");
     initCarousel();
     showModalOnCurrentSlideClick();
 }
