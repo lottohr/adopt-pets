@@ -1,6 +1,5 @@
 @import url("https://fonts.googleapis.com/css?family=Montserrat:400,500,700");
 body {
-  position: relative;
   font-size: 16px;
   font-family: 'Montserrat', sans-serif;
   font-weight: 400;
@@ -126,20 +125,17 @@ li {
     top: 10px; }
     .btn_close:hover {
       box-shadow: none; }
-    .btn_close .fas {
-      color: #29728A;
-      font-size: 30px;
-      transition: transform .3s ease-in-out; }
-      .btn_close .fas:hover {
-        transform: scale(1.1); }
-  .btn_menu:hover {
-    box-shadow: none; }
-  .btn_menu .fas {
-    color: white;
-    font-size: 30px;
-    transition: transform .3s ease-in-out; }
-    .btn_menu .fas:hover {
-      transform: scale(1.1); }
+    .btn_close .bar1,
+    .btn_close .bar2 {
+      width: 27px;
+      height: 3px;
+      background-color: #29728A;
+      margin: 6px 0;
+      transition: 0.4s; }
+    .btn_close .bar1 {
+      transform: rotate(-45deg) translate(0px, 0px); }
+    .btn_close .bar2 {
+      transform: rotate(45deg) translate(-6px, -6px); }
   .btn__load_more {
     width: 150px;
     margin: 20px;
@@ -151,19 +147,71 @@ li {
     background-color: #29728A; }
   .btn__carousel {
     position: absolute;
+    bottom: 15px;
     z-index: 999;
-    top: 50%;
-    transform: translateY(-50%);
     border-radius: 50%;
     background-color: #29728A;
     width: 50px;
     height: 50px;
     color: white;
     font-size: 20px; }
+    @media (min-width: 768px) {
+      .btn__carousel {
+        top: 50%;
+        transform: translateY(-50%); } }
   .btn__next_slide {
     right: 20px; }
   .btn__prev_slide {
     left: 20px; }
+
+.chevron {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%); }
+  .chevron:before {
+    content: '';
+    position: relative;
+    display: inline-block;
+    border-style: solid;
+    border-width: 4px 4px 0 0;
+    height: 12px;
+    width: 12px; }
+  .chevron_right:before {
+    left: -2px;
+    transform: rotate(45deg); }
+  .chevron_left:before {
+    left: 4px;
+    transform: rotate(-135deg); }
+
+.menu_btn {
+  display: block;
+  align-self: center;
+  cursor: pointer;
+  z-index: 9999;
+  margin: 10px 20px; }
+
+.bar1,
+.bar2,
+.bar3 {
+  width: 27px;
+  height: 3px;
+  background-color: white;
+  margin: 6px 0;
+  transition: 0.4s; }
+  .change .bar1, .change
+  .bar2, .change
+  .bar3 {
+    background-color: white; }
+
+.change .bar1 {
+  transform: rotate(-45deg) translate(-9px, 9px); }
+
+.change .bar2 {
+  opacity: 0; }
+
+.change .bar3 {
+  transform: rotate(45deg) translate(-4px, -4px); }
 
 .filters {
   display: flex;
@@ -263,7 +311,7 @@ li {
       .card img {
         height: 200px; } }
   .card__info {
-    padding: 10px 20px;
+    padding: 10px 10px;
     margin-bottom: 20px; }
     .card__info h2 {
       font-weight: 500;
@@ -307,10 +355,13 @@ li {
     position: absolute;
     width: 48%;
     height: 400px;
-    transition: 1s all ease;
+    transition: 1.1s all ease;
     background-size: cover;
     background-repeat: no-repeat;
-    background-position: center; }
+    background-position: center;
+    backface-visibility: hidden;
+    border: none;
+    will-change: transform; }
     .carousel__item:nth-child(1) {
       left: 0;
       transform: translateX(-100%); }
@@ -340,11 +391,26 @@ li {
         color: white;
         background-color: rgba(0, 0, 0, 0.685);
         font-size: 34px; }
-  .carousel .current__slide {
-    cursor: pointer; }
-    @media (min-width: 768px) {
-      .carousel .current__slide:hover {
-        transform: translateX(-50%) scale(1.1); } }
+  .carousel .pop_slide {
+    transform: translateX(-50%) scale(1.1); }
+
+#current__slide__overlay {
+  position: absolute;
+  width: 48%;
+  height: 400px;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  backface-visibility: hidden;
+  border: none;
+  will-change: transform;
+  cursor: pointer;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 99;
+  height: 400px;
+  background-color: transparent; }
 
 .modal {
   display: none;
@@ -357,7 +423,7 @@ li {
   transform: translate(-50%, -50%);
   background-color: white;
   text-align: center;
-  z-index: 99;
+  z-index: 999;
   box-shadow: 0px 10px 25px 0px rgba(0, 0, 0, 0.199); }
   @media (min-width: 920px) {
     .modal {
@@ -368,8 +434,14 @@ li {
     height: 500px; }
   .modal_title {
     margin-bottom: 20px; }
+  .modal_img {
+    height: 100px;
+    width: 100px;
+    border-radius: 50%;
+    object-fit: cover;
+    object-position: center; }
   .modal-opened .modal_overlay {
-    position: absolute;
+    position: fixed;
     top: 0;
     left: 0;
     width: 100%;

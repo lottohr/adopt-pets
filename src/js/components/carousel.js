@@ -6,10 +6,10 @@ function carouselController(data){
     const nextBtn = document.getElementById("nextSlide");
     const prevBtn = document.getElementById("prevSlide");
     const carousel = document.querySelector("#carouselContent");
+    const currentSlideOverlay = document.getElementById("current__slide__overlay");
     const interval = 2000;
     const carouselModalLoaded = new Event('modalLoaded');
     let slideId;
-    let slides = carousel.querySelectorAll(".carousel__item");
  
     const initCarousel = () => {    
         slideId = setInterval(() => {
@@ -28,7 +28,7 @@ function carouselController(data){
         carousel.prepend(secondLastClone);
         carousel.append(firstClone);
         carousel.append(secondClone);
-        currentSlide.classList.add("current__slide"); 
+        currentSlide.classList.add("current__slide");
     }
 
     function nextSlide(){
@@ -38,7 +38,6 @@ function carouselController(data){
         currentSlide.classList.add("current__slide");
         carousel.appendChild(slides[0]);
         showModalOnCurrentSlideClick();
-        stopSliderOnCurrentSlideHover();
     }
 
     function prevSlide(){
@@ -47,7 +46,6 @@ function carouselController(data){
         slides[1].classList.add("current__slide"); 
         carousel.insertBefore(slides[slides.length - 1], slides[0]);
         showModalOnCurrentSlideClick();
-        stopSliderOnCurrentSlideHover();
     }
 
     function removeCurrentClass(){
@@ -61,7 +59,7 @@ function carouselController(data){
         let slides = document.querySelectorAll(".carousel__item");
         slides.forEach((slide)=>{
             if(slide.classList.contains('current__slide')){
-                slide.onclick = ()=>{
+                currentSlideOverlay.onclick = ()=>{
                     renderModal(data.filter(el => el.id == slide.id));
                     document.getElementById("adoptModal").style.display="block";
                     document.body.classList.add("modal-opened"); 
@@ -73,47 +71,34 @@ function carouselController(data){
         })
     }
 
-    function stopSliderOnCurrentSlideHover(){
-        let slides = document.querySelectorAll(".carousel__item");
-        slides.forEach((slide)=>{
-            if(slide.classList.contains('current__slide')){
-                setTimeout(function() {
-                    slide.addEventListener("mouseenter", stopSlider );
-                    slide.addEventListener("mouseleave", initCarousel);
-                  }, 1000); 
-            }else{
-                removeMouseEvents(slide);   
-            }
-        })
-    }
-
     function stopSlider(){
         clearInterval(slideId);
     }
 
-    function removeMouseEvents(slide) {  
-        slide.removeEventListener('mouseenter', stopSlider);
-        slide.removeEventListener('mouseleave', initCarousel);
-    }
-
-    nextBtn.addEventListener("mouseenter", stopSlider);
-    prevBtn.addEventListener("mouseenter", stopSlider);
-    nextBtn.addEventListener("mouseleave", initCarousel);
-    prevBtn.addEventListener("mouseleave", initCarousel);
     nextBtn.addEventListener("click", nextSlide);
     prevBtn.addEventListener("click", prevSlide);
+
+    currentSlideOverlay.addEventListener("mouseenter", ()=>{
+        let currentSlide = document.querySelector(".current__slide");
+        currentSlide.classList.add("pop_slide");
+        stopSlider();
+    });
+    currentSlideOverlay.addEventListener("mouseleave", ()=>{
+        let currentSlide = document.querySelector(".current__slide");
+        currentSlide.classList.remove("pop_slide");
+        initCarousel();
+    });
 
     document.addEventListener("carouselUpdated", (ev) => {   
         renderTemplate(ev.detail.data.sort((a, b) => a.age - b.age).slice(0, 4));
         cloneSlides();
+        nextSlide();
         let slides = carousel.querySelectorAll(".carousel__item");
         let currentSlide = slides[3];
         currentSlide.classList.add("current__slide");
     })
 
     cloneSlides();
-    // Set first slide to current slide
-    slides[0].classList.add("current__slide");
     initCarousel();
     showModalOnCurrentSlideClick();
 }
