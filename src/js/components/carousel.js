@@ -77,8 +77,10 @@ function carouselController(data){
         let slides = document.querySelectorAll(".carousel__item");
         slides.forEach((slide)=>{
             if(slide.classList.contains('current__slide')){
-                slide.addEventListener("mouseenter", stopSlider );
-                slide.addEventListener("mouseleave", initCarousel);
+                setTimeout(function() {
+                    slide.addEventListener("mouseenter", stopSlider );
+                    slide.addEventListener("mouseleave", initCarousel);
+                  }, 1000); 
             }else{
                 removeMouseEvents(slide);   
             }
@@ -111,7 +113,7 @@ function carouselController(data){
 
     cloneSlides();
     // Set first slide to current slide
-    // slides[0].classList.add("current__slide");
+    slides[0].classList.add("current__slide");
     initCarousel();
     showModalOnCurrentSlideClick();
 }
