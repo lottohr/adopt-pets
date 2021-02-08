@@ -11,7 +11,7 @@ function carouselController(data){
     const carouselModalLoaded = new Event('modalLoaded');
     let slideId;
  
-    const initCarousel = () => {    
+    const startSlider = () => {    
         slideId = setInterval(() => {
             nextSlide();
         }, interval);
@@ -38,6 +38,8 @@ function carouselController(data){
         currentSlide.classList.add("current__slide");
         carousel.appendChild(slides[0]);
         showModalOnCurrentSlideClick();
+        stopSlider();
+        startSlider();
     }
 
     function prevSlide(){
@@ -46,6 +48,8 @@ function carouselController(data){
         slides[1].classList.add("current__slide"); 
         carousel.insertBefore(slides[slides.length - 1], slides[0]);
         showModalOnCurrentSlideClick();
+        stopSlider();
+        startSlider();
     }
 
     function removeCurrentClass(){
@@ -86,7 +90,7 @@ function carouselController(data){
     currentSlideOverlay.addEventListener("mouseleave", ()=>{
         let currentSlide = document.querySelector(".current__slide");
         currentSlide.classList.remove("pop_slide");
-        initCarousel();
+        startSlider();
     });
 
     document.addEventListener("carouselUpdated", (ev) => {   
@@ -99,7 +103,7 @@ function carouselController(data){
     })
 
     cloneSlides();
-    initCarousel();
+    startSlider();
     showModalOnCurrentSlideClick();
 }
 export default carouselController
